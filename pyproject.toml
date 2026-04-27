@@ -2,3 +2,6 @@
 [project]
 name = "q-haderslev-vbo"
 version = "0.1.0"
+
+[tool.setuptools.packages.find]
+include = ["q_haderslev_vbo*"]
