@@ -4,7 +4,7 @@ from datetime import datetime
 def update_item_data(
     data_json,
     *,
-    data_updates=None,
+    box_updates=None,
     status_updates=None,
     state_updates=None,
     log_entry=None,
@@ -15,7 +15,7 @@ def update_item_data(
     Opdaterer JSON-struktur for et work item.
 
     data_json      : dict (din eksisterende JSON i hukommelsen)
-    data_updates   : dict -> data-niveau
+    box_updates    : dict -> box-niveau (forretningsdata)
     status_updates : dict -> status-niveau
     state_updates  : dict -> state-niveau
     log_entry      : dict -> én loglinje
@@ -24,14 +24,14 @@ def update_item_data(
     """
 
     # 1. Sikr struktur
-    data_json.setdefault("data", {})
+    data_json.setdefault("box", {})
     data_json.setdefault("status", {})
     data_json.setdefault("state", {})
     data_json.setdefault("process_log", [])
 
-    # 2. Opdater data
-    if data_updates:
-        data_json["data"].update(data_updates)
+    # 2. Opdater box (forretningsdata)
+    if box_updates:
+        data_json["box"].update(box_updates)
 
     # 3. Opdater status
     if status_updates:
